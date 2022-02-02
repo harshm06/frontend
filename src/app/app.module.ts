@@ -7,11 +7,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShowdataComponent } from './showdata/showdata.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ParentComponent } from './parent/parent.component';
+import { ChildDataComponent } from './child-data/child-data.component';
+import { ChildButtonComponent } from './child-button/child-button.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ShowdataComponent
+    ShowdataComponent,
+    ParentComponent,
+    ChildDataComponent,
+    ChildButtonComponent
   ],
   imports: [
     BrowserModule,

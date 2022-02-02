@@ -1,0 +1,15 @@
+<h3>
+    Childata Component
+</h3>
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>ID</th>
+        <th>Title</th>
+    </tr>
+    <tr *ngFor="let album of albumlist">
+        <td>{{album.userId}}</td>
+        <td>{{album.id}}</td>
+        <td>{{album.title}}</td>
+    </tr>
+</table>
