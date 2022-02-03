@@ -1,0 +1,21 @@
+<div class="container">
+    <label>Enter the input value: </label>
+    <input #inputval type="number" min="0" placeholder="Input value">
+    <br>
+    <br>
+    <label>Choose currency from which you want to convert: </label>
+    <select #inputcurr>
+        <option *ngFor="let cur of curr">{{cur}}</option>
+    </select>
+    <br/>
+    <br/>
+    <label>Choose currency to which you want to convert: </label>
+    <select #outputcurr>
+        <option *ngFor="let cur of curr">{{cur}}</option>
+    </select>
+    <br><br>
+    <button (click)="outputValue(inputval.value, inputcurr.value, outputcurr.value)">Submit</button>
+    <br><br>
+    <div #output>
+    </div>
+</div>

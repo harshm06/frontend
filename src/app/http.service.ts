@@ -12,4 +12,8 @@ export class HttpService {
   getUsers(): Observable<Users[]>{
      return this.httpobj.get<Users[]>("https://jsonplaceholder.typicode.com/posts");
   }
+
+  getpost(id: number): Observable<Users>{
+    return this.httpobj.get<Users>("https://jsonplaceholder.typicode.com/posts/" + id)
+  }
 }

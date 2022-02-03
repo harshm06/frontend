@@ -19,4 +19,5 @@ export class ShowdataComponent implements OnInit {
   getUsers(): void{
     this.httpservice.getUsers().subscribe(users => this.users1 = users)
   }
+
 }

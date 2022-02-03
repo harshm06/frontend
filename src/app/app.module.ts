@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ParentComponent } from './parent/parent.component';
 import { ChildDataComponent } from './child-data/child-data.component';
 import { ChildButtonComponent } from './child-button/child-button.component';
+import { ConverterComponent } from './converter/converter.component';
+import { PostComponent } from './post/post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,9 @@ import { ChildButtonComponent } from './child-button/child-button.component';
     ShowdataComponent,
     ParentComponent,
     ChildDataComponent,
-    ChildButtonComponent
+    ChildButtonComponent,
+    ConverterComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
