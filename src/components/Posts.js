@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Child from "./Child";
-import { Link } from "react-router-dom";
+import ShowData from "./ShowData";
 import Demo from "./Demo";
+import ShowRadio from "./ShowRadio";
 import "../css/posts.css";
 
 const Posts = (props) => {
@@ -13,7 +14,7 @@ const Posts = (props) => {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [toggle]);
 
   const getPosts = () => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -21,18 +22,26 @@ const Posts = (props) => {
         return res.json();
       })
       .then((data) => {
-        //
-
         setPosts(data);
       })
       .catch((err) => {
-        console.log("Error ---- ", err);
+        console.log(err);
       });
   };
 
-  const onSort = () => {
+  const onSort = (val) => {
     let tempArray = [...posts];
-    tempArray.sort();
+    if (val === "id") {
+      tempArray.sort((a, b) => (a.id < b.id ? 1 : -1));
+    } else if (val === "title") {
+      tempArray.sort((a, b) => {
+        let a_title = a.title.toUpperCase();
+        let b_title = b.title.toUpperCase();
+
+        if (a_title > b_title) return 1;
+        else return -1;
+      });
+    }
     setPosts(tempArray);
   };
 
@@ -60,38 +69,10 @@ const Posts = (props) => {
       >
         Toggle
       </button>
-      <button
-        onClick={onSort}
-        style={{ color: toggle ? "salmon" : "brown" }}
-        className=""
-      >
-        Sort
-      </button>
+      <ShowRadio sortFuncParent={onSort} />
       {/* {<Child name={name} handleChange={handleChange} />}
       {name} */}
-      <table style={{ marginTop: "2rem" }}>
-        <tbody>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Body</th>
-            <th>Details</th>
-          </tr>
-          {toggle &&
-            posts.map((post) => (
-              <tr key={post.id}>
-                <td>{post.id}</td>
-                <td>{post.title}</td>
-                <td>{post.body}</td>
-                <td>
-                  <Link to={`/showpost/${post.id}`}>
-                    <button>Show Details</button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <ShowData postsprop={posts} toggleprop={toggle} />
     </div>
   );
 };
